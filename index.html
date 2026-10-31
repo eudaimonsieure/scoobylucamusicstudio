@@ -1,13 +1,20 @@
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Scooby Luca | Bon Jovi Collection</title>
 
+<meta name="description" content="Scooby Luca Bon Jovi Music Collection - Classic Rock, Demo Tracks and Instrumental Backing Tracks.">
+
 <style>
-* { box-sizing: border-box; }
+
+* {
+    box-sizing: border-box;
+}
 
 body {
     margin: 0;
@@ -15,6 +22,8 @@ body {
     color: #f5f0e6;
     font-family: Arial, sans-serif;
 }
+
+/* HEADER */
 
 header {
     text-align: center;
@@ -25,7 +34,7 @@ header {
 
 h1 {
     margin: 0;
-    font-size: 38px;
+    font-size: clamp(26px, 5vw, 38px);
     letter-spacing: 5px;
     color: #e8b66d;
 }
@@ -33,7 +42,10 @@ h1 {
 header p {
     color: #c8bba8;
     letter-spacing: 2px;
+    font-size: 13px;
 }
+
+/* MAIN */
 
 main {
     max-width: 850px;
@@ -41,108 +53,456 @@ main {
     padding: 0 18px;
 }
 
+.section-heading {
+    color: #e8b66d;
+    margin-bottom: 8px;
+}
+
+.description {
+    color: #aaa;
+    font-size: 14px;
+    margin-bottom: 25px;
+}
+
+/* SEARCH */
+
+.search-container {
+    margin-bottom: 25px;
+}
+
+#searchInput {
+    width: 100%;
+    padding: 13px 15px;
+    border-radius: 7px;
+    border: 1px solid #555;
+    background: #252525;
+    color: white;
+    font-size: 15px;
+    outline: none;
+}
+
+#searchInput:focus {
+    border-color: #c58b42;
+}
+
+/* TRACK COUNT */
+
+.track-count {
+    color: #c8bba8;
+    font-size: 13px;
+    margin-bottom: 15px;
+}
+
+/* TRACK CARD */
+
 .track {
     background: #252525;
     border: 1px solid #414141;
     border-radius: 9px;
     padding: 18px;
     margin-bottom: 15px;
+    transition: border-color 0.2s;
+}
+
+.track:hover {
+    border-color: #c58b42;
 }
 
 .track h3 {
     margin: 0 0 12px;
     color: #e8b66d;
+    font-size: 16px;
+    line-height: 1.5;
 }
+
+/* TRACK TYPE */
+
+.track-type {
+    display: inline-block;
+    font-size: 10px;
+    letter-spacing: 1px;
+    padding: 4px 8px;
+    border-radius: 4px;
+    margin-bottom: 12px;
+    background: #393127;
+    color: #e8b66d;
+}
+
+/* AUDIO PLAYER */
 
 audio {
+    display: block;
     width: 100%;
-    margin-bottom: 8px;
+    margin-bottom: 12px;
 }
 
+audio:focus {
+    outline: 1px solid #c58b42;
+}
+
+/* DOWNLOAD */
+
 .download {
+    display: inline-block;
     color: #e8b66d;
     text-decoration: none;
     font-size: 13px;
+    padding: 5px 0;
 }
+
+.download:hover {
+    color: white;
+    text-decoration: underline;
+}
+
+/* ERROR */
+
+.track-error {
+    color: #e58b78;
+    font-size: 12px;
+    margin-top: 8px;
+    display: none;
+}
+
+/* EMPTY SEARCH */
+
+.no-results {
+    display: none;
+    text-align: center;
+    padding: 35px 15px;
+    color: #999;
+    background: #252525;
+    border-radius: 9px;
+}
+
+/* FOOTER */
 
 footer {
     text-align: center;
     color: #888;
     padding: 35px 15px;
     font-size: 12px;
+    border-top: 1px solid #333;
+    margin-top: 50px;
 }
+
+/* MOBILE */
+
+@media (max-width: 600px) {
+
+    header {
+        padding: 40px 15px 25px;
+    }
+
+    h1 {
+        letter-spacing: 3px;
+    }
+
+    main {
+        margin-top: 25px;
+    }
+
+    .track {
+        padding: 15px;
+    }
+
+}
+
 </style>
 </head>
 
 <body>
 
 <header>
+
     <h1>SCOOBY LUCA</h1>
+
     <p>BON JOVI COLLECTION</p>
+
     <p>CLASSIC ROCK · MUSIC · BACKING TRACKS</p>
+
 </header>
 
+
 <main id="playlist">
-    <h2>Bon Jovi Tracks</h2>
-    <p>Listen online or download your tracks.</p>
+
+    <h2 class="section-heading">Bon Jovi Tracks</h2>
+
+    <p class="description">
+        Listen online or download your tracks.
+    </p>
+
+    <div class="search-container">
+
+        <input
+            type="search"
+            id="searchInput"
+            placeholder="Search tracks..."
+            aria-label="Search music tracks"
+        >
+
+    </div>
+
+    <div class="track-count" id="trackCount">
+        Loading tracks...
+    </div>
+
+    <div id="trackList"></div>
+
+    <div class="no-results" id="noResults">
+        No matching tracks found.
+    </div>
+
 </main>
 
+
 <footer>
+
     SCOOBY LUCA · MUSIC COLLECTION
+
 </footer>
 
+
 <script>
+
+/* =====================================
+   AUDIO CONFIGURATION
+===================================== */
+
+// If MP3 files are inside a folder,
+// change this to "audio/"
+// Keep "" if they are beside index.html.
+
+const AUDIO_FOLDER = "";
+
+
+/* =====================================
+   TRACK DATABASE
+===================================== */
+
 const tracks = [
+
     "01-Breathe-Demo.mp3",
     "01-Breathe-Demo-Instrumental.mp3",
+
     "02-Lucky-Demo.mp3",
     "02-Lucky-Demo-Instrumental.mp3",
+
     "03-No-Regrets-Demo.mp3",
     "03-No-Regrets-Demo-Instrumental.mp3",
+
     "04-Standing-Demo.mp3",
     "04-Standing-Demo-Instrumental.mp3",
+
     "05-We-Can-Dance-Demo.mp3",
     "05-We-Can-Dance-Demo-Instrumental.mp3",
+
     "06-Misunderstood-Live.mp3",
     "06-Misunderstood-Live-Instrumental.mp3",
+
     "07-Everyday-Acoustic.mp3",
     "07-Everyday-Acoustic-Instrumental.mp3",
-    "08-Just-Older-Live.mp3"
+
+    "08-Just-Older-Live.mp3",
     "08-Just-Older-Live-Instrumental.mp3"
+
 ];
 
-const playlist = document.getElementById("playlist");
 
-tracks.forEach((file, index) => {
-    const title = file
+/* =====================================
+   ELEMENT REFERENCES
+===================================== */
+
+const trackList = document.getElementById("trackList");
+
+const trackCount = document.getElementById("trackCount");
+
+const searchInput = document.getElementById("searchInput");
+
+const noResults = document.getElementById("noResults");
+
+
+/* =====================================
+   URL BUILDER
+===================================== */
+
+function getAudioURL(file) {
+
+    return AUDIO_FOLDER + file
+        .split("/")
+        .map(part => encodeURIComponent(part))
+        .join("/");
+
+}
+
+
+/* =====================================
+   TRACK TITLE
+===================================== */
+
+function formatTitle(file) {
+
+    return file
         .replace(/\.mp3$/i, "")
         .replace(/[-_]/g, " ");
 
-    const card = document.createElement("section");
-    card.className = "track";
+}
 
-    const heading = document.createElement("h3");
-    heading.textContent = `${index + 1}. ${title}`;
 
-    const player = document.createElement("audio");
-    player.controls = true;
-    player.preload = "none";
+/* =====================================
+   TRACK TYPE
+===================================== */
 
-    const source = document.createElement("source");
-    source.src = encodeURIComponent(file);
-    source.type = "audio/mpeg";
+function getTrackType(file) {
 
-    player.appendChild(source);
+    if (file.toLowerCase().includes("instrumental")) {
+        return "INSTRUMENTAL / BACKING TRACK";
+    }
 
-    const download = document.createElement("a");
-    download.className = "download";
-    download.href = encodeURIComponent(file);
-    download.download = file;
-    download.textContent = "↓ Download MP3";
+    return "VOCAL / ORIGINAL TRACK";
 
-    card.append(heading, player, download);
-    playlist.appendChild(card);
+}
+
+
+/* =====================================
+   GENERATE TRACK CARDS
+===================================== */
+
+function renderTracks(filter = "") {
+
+    trackList.innerHTML = "";
+
+    const filteredTracks = tracks.filter(file => {
+
+        return formatTitle(file)
+            .toLowerCase()
+            .includes(filter.toLowerCase());
+
+    });
+
+    trackCount.textContent =
+        `${filteredTracks.length} of ${tracks.length} tracks`;
+
+    noResults.style.display =
+        filteredTracks.length === 0 ? "block" : "none";
+
+
+    filteredTracks.forEach((file, index) => {
+
+        const audioURL = getAudioURL(file);
+
+        // TRACK CARD
+
+        const card = document.createElement("section");
+
+        card.className = "track";
+
+
+        // TRACK HEADING
+
+        const heading = document.createElement("h3");
+
+        heading.textContent =
+            `${tracks.indexOf(file) + 1}. ${formatTitle(file)}`;
+
+
+        // TRACK TYPE LABEL
+
+        const type = document.createElement("div");
+
+        type.className = "track-type";
+
+        type.textContent = getTrackType(file);
+
+
+        // AUDIO PLAYER
+
+        const player = document.createElement("audio");
+
+        player.controls = true;
+
+        player.preload = "none";
+
+        player.setAttribute("aria-label", formatTitle(file));
+
+
+        // AUDIO SOURCE
+
+        const source = document.createElement("source");
+
+        source.src = audioURL;
+
+        source.type = "audio/mpeg";
+
+
+        player.appendChild(source);
+
+
+        // ERROR MESSAGE
+
+        const error = document.createElement("div");
+
+        error.className = "track-error";
+
+        error.textContent =
+            "Unable to load this MP3. Check the file name and repository path.";
+
+
+        player.addEventListener("error", () => {
+
+            error.style.display = "block";
+
+        });
+
+
+        // DOWNLOAD LINK
+
+        const download = document.createElement("a");
+
+        download.className = "download";
+
+        download.href = audioURL;
+
+        download.download = file;
+
+        download.textContent = "↓ Download MP3";
+
+
+        // ASSEMBLE CARD
+
+        card.append(
+            heading,
+            type,
+            player,
+            download,
+            error
+        );
+
+
+        trackList.appendChild(card);
+
+    });
+
+}
+
+
+/* =====================================
+   SEARCH FUNCTION
+===================================== */
+
+searchInput.addEventListener("input", event => {
+
+    renderTracks(event.target.value.trim());
+
 });
+
+
+/* =====================================
+   INITIALIZE PLAYLIST
+===================================== */
+
+renderTracks();
+
 </script>
 
 </body>
