@@ -1,713 +1,579 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#101114">
-
-<title>Scooby Luca | Bon Jovi Back Tracking Samplers</title>
-
-<meta name="description" content="Bon Jovi 2003 Target Exclusive EP — Back Tracking Samplers, demos, vocals and instrumentals.">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#101010">
+<meta name="description" content="Scooby Luca — Bon Jovi music archive, vocals, instrumentals and videos.">
+<title>Scooby Luca | Bon Jovi Music Archive</title>
 
 <style>
 :root {
-    --bg: #101114;
-    --card: #1b1d22;
-    --card2: #22252b;
-    --gold: #d6b36a;
-    --gold-light: #f0d28e;
-    --text: #f5f5f5;
-    --muted: #a5a5a5;
-    --border: #34363d;
+  --bg:#0b0b0c;
+  --surface:#151516;
+  --card:#1c1b19;
+  --gold:#d7b56d;
+  --bright:#f0d69a;
+  --text:#f2eee5;
+  --muted:#aaa397;
+  --line:rgba(215,181,109,.25);
 }
-
-* {
-    box-sizing: border-box;
-}
-
+* { box-sizing:border-box; }
+html { scroll-behavior:smooth; }
 body {
-    margin: 0;
-    padding: 25px 15px 50px;
-    background:
-        radial-gradient(ellipse at top, #302719 0%, transparent 45%),
-        var(--bg);
-    color: var(--text);
-    font-family: Arial, sans-serif;
-    line-height: 1.6;
+  margin:0;
+  min-height:100vh;
+  color:var(--text);
+  background:
+    radial-gradient(circle at 50% -10%,rgba(215,181,109,.12),transparent 38rem),
+    linear-gradient(180deg,#111,var(--bg) 52%,#090909);
+  font-family:Georgia,"Times New Roman",serif;
+  line-height:1.6;
 }
-
-.container {
-    width: 100%;
-    max-width: 950px;
-    margin: auto;
+a { color:var(--bright); }
+.shell {
+  width:min(100% - 36px,1040px);
+  margin:auto;
+  padding:30px 0 70px;
 }
-
-/* HEADER */
-
-header {
-    text-align: center;
-    padding: 35px 10px 30px;
-    border-bottom: 1px solid var(--border);
+.site {
+  text-align:center;
+  padding:30px 16px 35px;
+  border-bottom:1px solid var(--line);
+  margin-bottom:32px;
 }
-
-.brand {
-    color: var(--gold);
-    font-size: 11px;
-    font-weight: bold;
-    letter-spacing: 5px;
-    text-transform: uppercase;
+.eyebrow,.track-no,.media-label,.track-sub,.footer,.search-label {
+  font-family:Arial,sans-serif;
+  text-transform:uppercase;
 }
-
-header h1 {
-    margin: 12px 0 5px;
-    color: var(--gold-light);
-    font-family: Georgia, serif;
-    font-size: clamp(30px, 6vw, 48px);
-    font-weight: normal;
-    letter-spacing: 5px;
+.eyebrow {
+  color:var(--gold);
+  font-size:.72rem;
+  font-weight:bold;
+  letter-spacing:.32em;
 }
-
-header h2 {
-    margin: 8px 0;
-    font-size: 17px;
-    font-weight: normal;
-    letter-spacing: 4px;
+h1 {
+  margin:10px 0 5px;
+  color:var(--bright);
+  font-size:clamp(2rem,6vw,3.6rem);
+  font-weight:500;
+  letter-spacing:.055em;
+  line-height:1.1;
 }
-
-header p {
-    color: var(--muted);
-    font-size: 11px;
-    letter-spacing: 2px;
+.subtitle { color:var(--muted); margin:12px auto 0; }
+.section-heading {
+  display:flex;
+  align-items:center;
+  gap:16px;
+  margin:0 0 16px;
+  color:var(--bright);
+  font-size:1.45rem;
+  font-weight:500;
+  letter-spacing:.08em;
+  text-transform:uppercase;
 }
-
-/* COLLECTION DESCRIPTION */
-
-.description {
-    max-width: 760px;
-    margin: 30px auto;
-    text-align: center;
-    color: #cccccc;
-    font-size: 14px;
+.section-heading:after {
+  content:"";
+  height:1px;
+  flex:1;
+  background:linear-gradient(90deg,var(--line),transparent);
 }
-
-.description em {
-    color: var(--gold-light);
+.note {
+  margin:0 0 25px;
+  padding:17px 20px;
+  color:#c8c0b3;
+  background:rgba(255,255,255,.025);
+  border-left:2px solid var(--gold);
 }
-
-/* SECTION */
-
-.section-title {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    margin: 35px 0 20px;
-    color: var(--gold-light);
-    font-family: Georgia, serif;
-    font-size: 23px;
-    font-weight: normal;
+.search-area {
+  margin-bottom:22px;
 }
-
-.section-title::after {
-    content: "";
-    flex: 1;
-    height: 1px;
-    background: var(--border);
+.search-label {
+  display:block;
+  margin-bottom:8px;
+  color:var(--gold);
+  font-size:.7rem;
+  letter-spacing:.16em;
 }
-
-/* TRACK CARD */
-
+#searchInput {
+  width:100%;
+  padding:14px 16px;
+  border:1px solid var(--line);
+  border-radius:8px;
+  background:#151515;
+  color:white;
+  font-size:15px;
+  outline:none;
+}
+#searchInput:focus { border-color:var(--gold); }
+.track-count {
+  margin:12px 3px 18px;
+  color:var(--muted);
+  font:12px Arial,sans-serif;
+}
 .track-card {
-    overflow: hidden;
-    margin-bottom: 25px;
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 13px;
+  overflow:hidden;
+  margin-bottom:20px;
+  background:linear-gradient(145deg,rgba(31,30,27,.98),rgba(17,17,17,.98));
+  border:1px solid var(--line);
+  border-radius:15px;
+  box-shadow:0 18px 45px rgba(0,0,0,.3);
 }
-
-.track-header {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    padding: 18px 20px;
-    background: var(--card2);
-    border-bottom: 1px solid var(--border);
+.track-top {
+  padding:22px clamp(17px,4vw,30px);
+  border-bottom:1px solid var(--line);
+  background:linear-gradient(110deg,rgba(215,181,109,.09),transparent 60%);
 }
-
-.track-number {
-    display: grid;
-    place-items: center;
-    width: 43px;
-    height: 43px;
-    flex-shrink: 0;
-    border: 1px solid var(--gold);
-    border-radius: 8px;
-    color: var(--gold-light);
-    font-family: Georgia, serif;
-    font-size: 18px;
+.track-no {
+  color:var(--gold);
+  font-size:.72rem;
+  font-weight:bold;
+  letter-spacing:.24em;
 }
-
-.track-name {
-    margin: 0;
-    font-family: Georgia, serif;
-    font-size: 19px;
+.track-title {
+  margin:5px 0 0;
+  color:var(--text);
+  font-size:clamp(1.4rem,4vw,2rem);
+  font-weight:500;
 }
-
-.track-subtitle {
-    color: var(--muted);
-    font-size: 10px;
-    letter-spacing: 2px;
+.track-sub {
+  margin:4px 0 0;
+  color:var(--muted);
+  font-size:.72rem;
+  letter-spacing:.14em;
 }
-
-/* MEDIA */
-
-.media-section {
-    padding: 20px;
+.media {
+  display:grid;
+  grid-template-columns:1fr;
+  gap:18px;
+  padding:22px clamp(17px,4vw,30px);
 }
-
 .media-label {
-    margin: 0 0 12px;
-    color: var(--gold);
-    font-size: 11px;
-    font-weight: bold;
-    letter-spacing: 3px;
-    text-transform: uppercase;
+  display:block;
+  margin-bottom:8px;
+  color:var(--gold);
+  font-size:.7rem;
+  font-weight:bold;
+  letter-spacing:.15em;
 }
-
+video,audio { display:block; width:100%; }
 video {
-    display: block;
-    width: 100%;
-    max-height: 520px;
-    aspect-ratio: 16 / 9;
-    background: #000;
-    border-radius: 9px;
+  max-height:500px;
+  background:#000;
+  border:1px solid var(--line);
+  border-radius:9px;
 }
-
-.audio-item {
-    margin-top: 14px;
-    padding: 15px;
-    background: #15171b;
-    border: 1px solid var(--border);
-    border-radius: 9px;
-}
-
-.audio-heading {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 10px;
-}
-
-.audio-name {
-    font-size: 14px;
-    font-weight: bold;
-}
-
-.audio-type {
-    color: var(--gold);
-    font-size: 10px;
-    letter-spacing: 2px;
-}
-
 audio {
-    display: block;
-    width: 100%;
-    height: 42px;
+  height:42px;
+  accent-color:var(--gold);
 }
-
-.download {
-    display: inline-block;
-    margin-top: 10px;
-    color: var(--gold-light);
-    font-size: 12px;
-    text-decoration: none;
-    border-bottom: 1px solid var(--gold);
+.audio-card {
+  padding:14px;
+  background:rgba(0,0,0,.28);
+  border:1px solid rgba(215,181,109,.17);
+  border-radius:9px;
 }
-
-.download:hover {
-    color: white;
+.audio-title {
+  margin:0 0 9px;
+  font-size:.95rem;
 }
-
-/* FOOTER */
-
-footer {
-    margin-top: 45px;
-    padding: 25px 10px;
-    border-top: 1px solid var(--border);
-    color: var(--muted);
-    text-align: center;
-    font-size: 11px;
-    letter-spacing: 2px;
+.links {
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px 16px;
+  margin-top:9px;
+  font: .78rem Arial,sans-serif;
 }
-
-/* MOBILE */
-
-@media (max-width: 550px) {
-    body {
-        padding: 15px 10px 35px;
-    }
-
-    header {
-        padding-top: 25px;
-    }
-
-    header h1 {
-        letter-spacing: 3px;
-    }
-
-    .media-section {
-        padding: 14px;
-    }
-
-    .audio-heading {
-        align-items: flex-start;
-        flex-direction: column;
-        gap: 4px;
-    }
+.links a {
+  text-decoration-color:rgba(240,214,154,.4);
+  text-underline-offset:3px;
 }
-
-
-/* =================================
-   LYRICS PANEL
-================================= */
-
-.lyrics-panel {
-    margin: 0 20px 25px;
-    overflow: hidden;
-    background: linear-gradient(145deg, #24221e, #17181c);
-    border: 1px solid rgba(214,179,106,.35);
-    border-radius: 12px;
+.video-section { grid-column:1/-1; }
+.lyrics {
+  margin:0 clamp(17px,4vw,30px) 26px;
+  overflow:hidden;
+  background:radial-gradient(circle at 100% 0%,rgba(215,181,109,.09),transparent 23rem),#111110;
+  border:1px solid rgba(215,181,109,.32);
+  border-radius:12px;
 }
-
-.lyrics-panel summary {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 12px;
-    padding: 20px;
-    cursor: pointer;
-    list-style: none;
+.lyrics summary {
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:18px;
+  padding:18px 20px;
+  cursor:pointer;
+  list-style:none;
 }
-
-.lyrics-panel summary::-webkit-details-marker {
-    display: none;
-}
-
+.lyrics summary::-webkit-details-marker { display:none; }
 .lyrics-heading {
-    color: #f0d28e;
-    font-family: Georgia, serif;
-    font-size: 21px;
-    letter-spacing: 2px;
+  display:block;
+  color:var(--bright);
+  font-size:1.2rem;
 }
-
-.lyrics-subheading {
-    display: block;
-    margin-top: 5px;
-    color: #a5a5a5;
-    font-family: Arial, sans-serif;
-    font-size: 10px;
-    letter-spacing: 2px;
+.lyrics-sub {
+  display:block;
+  margin-top:3px;
+  color:var(--muted);
+  font: .67rem Arial,sans-serif;
+  letter-spacing:.15em;
 }
-
-.lyrics-toggle {
-    color: #d6b36a;
-    font-size: 23px;
-    transition: transform .25s ease;
+.toggle {
+  display:grid;
+  width:30px;
+  height:30px;
+  flex:0 0 30px;
+  place-items:center;
+  color:var(--bright);
+  border:1px solid var(--line);
+  border-radius:50%;
+  font:1.15rem Arial,sans-serif;
 }
-
-.lyrics-panel[open] .lyrics-toggle {
-    transform: rotate(45deg);
+.lyrics[open] .toggle { transform:rotate(45deg); }
+.lyrics-body {
+  padding:0 22px 25px;
+  border-top:1px solid rgba(215,181,109,.17);
 }
-
-.lyrics-content {
-    padding: 10px 25px 30px;
-    border-top: 1px solid #34363d;
+.album {
+  margin:18px 0 24px;
+  padding:12px 15px;
+  color:#b9b09f;
+  background:rgba(215,181,109,.055);
+  border-left:2px solid var(--gold);
+  font:.72rem/1.9 Arial,sans-serif;
+  letter-spacing:.08em;
 }
-
-.lyrics-album {
-    margin: 20px 0 25px;
-    padding-bottom: 17px;
-    border-bottom: 1px solid rgba(214,179,106,.25);
-    color: #a5a5a5;
-    font-size: 11px;
-    line-height: 2;
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
+.album strong { color:var(--bright); }
+.verse {
+  margin:0 0 22px;
+  color:#e6e0d4;
+  font-size:1rem;
+  line-height:1.95;
+  white-space:pre-line;
 }
-
-.lyrics-album strong {
-    color: #d6b36a;
+.lyrics-tag {
+  margin:22px 0 10px;
+  color:var(--gold);
+  font:bold .68rem Arial,sans-serif;
+  letter-spacing:.2em;
+  text-transform:uppercase;
 }
-
-.lyrics-verse {
-    margin: 25px 0;
-    color: #dedbd4;
-    font-family: Georgia, serif;
-    font-size: 16px;
-    line-height: 1.95;
+.chorus {
+  margin:0 0 23px;
+  padding:16px 18px;
+  color:#f0e7d5;
+  background:linear-gradient(90deg,rgba(215,181,109,.12),rgba(215,181,109,.025));
+  border-left:2px solid var(--gold);
+  font-size:1rem;
+  line-height:1.95;
+  white-space:pre-line;
 }
-
-.lyrics-label {
-    display: block;
-    margin-bottom: 10px;
-    color: #d6b36a;
-    font-family: Arial, sans-serif;
-    font-size: 10px;
-    font-weight: bold;
-    letter-spacing: 3px;
-    text-transform: uppercase;
+.chorus strong,.ending strong { color:var(--bright); }
+.stage {
+  margin:24px 0;
+  color:var(--gold);
+  font-style:italic;
+  text-align:center;
 }
-
-.lyrics-chorus {
-    margin: 25px 0;
-    padding: 18px 20px;
-    background: rgba(214,179,106,.07);
-    border-left: 3px solid #d6b36a;
-    border-radius: 0 8px 8px 0;
-    color: #f0d28e;
-    font-family: Georgia, serif;
-    font-size: 16px;
-    line-height: 2;
+.ending {
+  padding-top:16px;
+  border-top:1px solid rgba(215,181,109,.2);
+  text-align:center;
 }
-
-.lyrics-stage {
-    margin: 25px 0;
-    color: #aaa;
-    font-family: Arial, sans-serif;
-    font-size: 11px;
-    font-style: italic;
-    letter-spacing: 3px;
-    text-align: center;
+.empty {
+  display:none;
+  padding:30px;
+  color:var(--muted);
+  text-align:center;
 }
-
-.lyrics-ending {
-    margin-top: 30px;
-    color: #f0d28e;
-    font-family: Georgia, serif;
-    font-size: 20px;
-    font-weight: bold;
-    letter-spacing: 7px;
-    text-align: center;
+.footer {
+  margin-top:30px;
+  padding-top:20px;
+  color:#777168;
+  border-top:1px solid rgba(215,181,109,.15);
+  font-size:.7rem;
+  letter-spacing:.08em;
+  text-align:center;
 }
-
-@media (max-width: 550px) {
-    .lyrics-panel {
-        margin-right: 14px;
-        margin-left: 14px;
-    }
-
-    .lyrics-content {
-        padding-right: 17px;
-        padding-left: 17px;
-    }
-
-    .lyrics-verse,
-    .lyrics-chorus {
-        font-size: 15px;
-    }
+@media(min-width:760px) {
+  .media { grid-template-columns:1fr 1fr; align-items:start; }
+  .video-section { grid-column:1/-1; }
 }
-    
+@media(max-width:520px) {
+  .shell { width:min(100% - 22px,1040px); padding-top:14px; }
+  .site { padding:25px 8px; margin-bottom:25px; }
+  .lyrics-body { padding-left:15px; padding-right:15px; }
+}
 </style>
 </head>
 
 <body>
-
-<div class="container">
-
-    <!-- HEADER -->
-
-    <header>
-        <div class="brand">Scooby Luca Music Archive</div>
-
-        <h1>BON JOVI</h1>
-
-        <h2>BACK TRACKING SAMPLERS</h2>
-
-        <p>CLASSIC ROCK · DEMOS · VOCALS · INSTRUMENTALS</p>
-    </header>
-
-
-    <!-- COLLECTION INFORMATION -->
-
-    <section class="description">
-
-        Bon Jovi's 2003 Target Exclusive EP to promote
-        their at-the-time new album <em>Bounce</em>,
-        with outtakes from the album <em>Crush</em>.
-
-    </section>
-
-
-    <!-- BACK TRACKING SAMPLERS -->
-
-    <h2 class="section-title">
-        Back Tracking Samplers
-    </h2>
-
-
-    <!-- TRACK 01 -->
-
-    <article class="track-card">
-
-        <div class="track-header">
-
-            <div class="track-number">01</div>
-
-            <div>
-                <h3 class="track-name">
-                    Breathe (Demo)
-                </h3>
-
-                <div class="track-subtitle">
-                    VIDEO SAMPLER · AUDIO VERSIONS
-                </div>
-            </div>
-
-        </div>
-
-
-        <!-- VIDEO -->
-
-        <section class="media-section">
-
-            <p class="media-label">
-                Video Sampler
-            </p>
-
-            <video controls preload="metadata" playsinline>
-
-                <source
-                    src="https://github.com/user-attachments/assets/474a82ba-0b64-491f-a4f0-244384ae245c"
-                    type="video/mp4">
-
-                Your browser does not support HTML video.
-
-            </video>
-
-            <a
-                class="download"
-                href="https://github.com/user-attachments/assets/474a82ba-0b64-491f-a4f0-244384ae245c"
-                target="_blank"
-                rel="noopener">
-
-                Open Original Video
-
-            </a>
-
-        </section>
-
-
-        <!-- MP3 AUDIO -->
-
-        <section class="media-section">
-
-            <p class="media-label">
-                MP3 Audio
-            </p>
-
-
-            <!-- VOCALS -->
-
-            <div class="audio-item">
-
-                <div class="audio-heading">
-
-                    <span class="audio-name">
-                        Breathe (Demo)
-                    </span>
-
-                    <span class="audio-type">
-                        VOCALS
-                    </span>
-
-                </div>
-
-                <audio controls preload="none">
-
-                    <source
-                        src="https://github.com/user-attachments/files/34210844/01.Breathe.Demo.mp3"
-                        type="audio/mpeg">
-
-                    Your browser does not support MP3 playback.
-
-                </audio>
-
-                <a
-                    class="download"
-                    href="https://github.com/user-attachments/files/34210844/01.Breathe.Demo.mp3"
-                    target="_blank"
-                    rel="noopener">
-
-                    Open / Download MP3
-
-                </a>
-
-            </div>
-
-
-            <!-- INSTRUMENTAL -->
-
-            <div class="audio-item">
-
-                <div class="audio-heading">
-
-                    <span class="audio-name">
-                        Breathe (Demo)
-                    </span>
-
-                    <span class="audio-type">
-                        INSTRUMENTAL
-                    </span>
-
-                </div>
-
-                <audio controls preload="none">
-
-                    <source
-                        src="https://github.com/user-attachments/files/34210924/01.Breathe.Demo._.Instrumental.mp3"
-                        type="audio/mpeg">
-
-                    Your browser does not support MP3 playback.
-
-                </audio>
-
-                <a
-                    class="download"
-                    href="https://github.com/user-attachments/files/34210924/01.Breathe.Demo._.Instrumental.mp3"
-                    target="_blank"
-                    rel="noopener">
-
-                    Open / Download MP3
-
-                </a>
-
-            </div>
-
-        </section>
-
-<!-- =================================
-     BREATHE (DEMO) LYRICS
-================================= -->
-
-<details class="lyrics-panel" open>
-
+<main class="shell">
+
+<header class="site">
+  <div class="eyebrow">The Music Archive</div>
+  <h1>Scooby Luca</h1>
+  <p class="subtitle">Bon Jovi Collection</p>
+</header>
+
+<section>
+  <h2 class="section-heading">Back Tracking Samplers</h2>
+  <p class="note">
+    Bon Jovi's 2003 Target Exclusive EP promoting the Bounce era,
+    featuring demos, alternate versions, live recordings and
+    instrumental backing tracks.
+  </p>
+
+  <div class="search-area">
+    <label class="search-label" for="searchInput">Search the collection</label>
+    <input id="searchInput" type="search"
+      placeholder="Search songs, demos, live versions..."
+      autocomplete="off">
+  </div>
+
+  <div class="track-count" id="trackCount"></div>
+  <div id="playlist"></div>
+  <div class="empty" id="emptyMessage">No matching tracks found.</div>
+</section>
+
+<footer class="footer">
+  SCOOBY LUCA · BON JOVI MUSIC ARCHIVE
+</footer>
+</main>
+
+<script>
+const tracks = [
+  {
+    number:"01",
+    title:"Breathe (Demo)",
+    video:"https://github.com/user-attachments/assets/474a82ba-0b64-491f-a4f0-244384ae245c",
+    vocals:"https://github.com/user-attachments/files/34210844/01.Breathe.Demo.mp3",
+    instrumental:"https://github.com/user-attachments/files/34210924/01.Breathe.Demo._.Instrumental.mp3",
+    lyrics:true
+  },
+  {
+    number:"02",
+    title:"Lucky",
+    video:"https://github.com/user-attachments/assets/2eccfd8e-ae61-4fba-b060-3431108d3cf0",
+    vocals:"https://github.com/user-attachments/files/34211857/02.Lucky.Demo.mp3",
+    instrumental:"https://github.com/user-attachments/files/34211811/02.Lucky.Demo._.Instrumental.mp3"
+  },
+  {
+    number:"03",
+    title:"No Regrets",
+    video:"https://github.com/user-attachments/assets/0dbc8067-ab12-46b5-ad16-160227406769",
+    vocals:"https://github.com/user-attachments/files/34211854/03.No.Regrets.Demo.mp3",
+    instrumental:"https://github.com/user-attachments/files/34211821/03.No.Regrets.Demo._.Instrumental.mp3"
+  },
+  {
+    number:"04",
+    title:"Standing",
+    vocals:"https://github.com/user-attachments/files/34211858/04.Standing.Demo.mp3",
+    instrumental:"https://github.com/user-attachments/files/34211819/04.Standing.Demo._.Instrumental.mp3"
+  },
+  {
+    number:"05",
+    title:"We Can Dance",
+    vocals:"https://github.com/user-attachments/files/34211855/05.We.Can.Dance.Demo.mp3",
+    instrumental:"https://github.com/user-attachments/files/34211820/05.We.Can.Dance.Demo._.Instrumental.mp3"
+  },
+  {
+    number:"06",
+    title:"Misunderstood",
+    version:"Live",
+    vocals:"https://github.com/user-attachments/files/34211860/06.Misunderstood.Live.mp3",
+    instrumental:"https://github.com/user-attachments/files/34211818/06.Misunderstood.Live._.Instrumental.mp3"
+  },
+  {
+    number:"07",
+    title:"Everyday",
+    version:"Acoustic",
+    vocals:"https://github.com/user-attachments/files/34211859/07.Everyday.Acoustic.mp3",
+    instrumental:"https://github.com/user-attachments/files/34211822/07.Everyday.Acoustic._.Instrumental.mp3"
+  },
+  {
+    number:"08",
+    title:"Just Older",
+    version:"Live",
+    vocals:"https://github.com/user-attachments/files/34211856/08.Just.Older.Live.mp3",
+    instrumental:"https://github.com/user-attachments/files/34211823/08.Just.Older.Live._.Instrumental.mp3"
+  }
+];
+
+const breatheLyrics = `
+  <details class="lyrics">
     <summary>
-        <div>
-            <span class="lyrics-heading">Lyrics</span>
-            <span class="lyrics-subheading">
-                BREATHE (DEMO) · TRACK 01
-            </span>
-        </div>
-
-        <span class="lyrics-toggle">+</span>
+      <span>
+        <span class="lyrics-heading">Breathe (Demo) Lyrics</span>
+        <span class="lyrics-sub">TRACK 01 · BREATHE</span>
+      </span>
+      <span class="toggle" aria-hidden="true">+</span>
     </summary>
+    <div class="lyrics-body">
+      <div class="album">
+        ALBUM: <strong>BOUNCE Demos and B-sides</strong><br>
+        TRACK: <strong>BREATHE</strong>
+      </div>
 
-    <div class="lyrics-content">
+      <p class="verse">What's the world coming to
+Where are we all running to
+Not all our dreams are coming true
+We can't let it break us
+In two hearts that beat as one
+Can't let the clouds cover the sun
+If I'm ramblin' I'm guilty
+Of wearing my heart on my sleeve</p>
 
-        <div class="lyrics-album">
-            ALBUM: <strong>BOUNCE Demos and B-sides</strong><br>
-            TRACK: <strong>BREATHE</strong>
-        </div>
+      <div class="lyrics-tag">Chorus</div>
+      <p class="chorus">When it hurts - <strong>BREATHE</strong>
+When it burns - <strong>BREATHE</strong>
+The feeling inside you is feeling like I do
+Take a breath - <strong>BREATHE</strong>
+Let it out - <strong>BREATHE</strong>
+Just close your eyes don't hold it inside you
+<strong>BREATHE</strong></p>
 
-        <div class="lyrics-verse">
-            What's the world coming to<br>
-            Where are we all running to<br>
-            Not all our dreams are coming true<br>
-            We can't let it break us<br>
-            In two hearts that beat as one<br>
-            Can't let the clouds cover the sun<br>
-            If I'm ramblin' I'm guilty<br>
-            Of wearing my heart on my sleeve
-        </div>
+      <p class="verse">She said baby you look down tonight
+There's something wrong and that ain't right
+I hear you talking in your sleep
+I want to dive into your dreams
+And wrap my loving arms around you
+Protect you when the waves crash down on you
+When you're lost and you're scared
+I'll be the air</p>
 
-        <div class="lyrics-chorus">
-            <span class="lyrics-label">Chorus</span>
-            When it hurts - BREATHE<br>
-            When it burns - BREATHE<br>
-            The feeling inside you is feeling like I do<br>
-            Take a breath - BREATHE<br>
-            Let it out - BREATHE<br>
-            Just close your eyes don't hold it inside you<br>
-            <strong>BREATHE</strong>
-        </div>
+      <div class="lyrics-tag">Chorus</div>
+      <p class="chorus">When it hurts - <strong>BREATHE</strong>
+When it burns - <strong>BREATHE</strong>
+The feeling inside you is feeling like I do
+Take a breath - <strong>BREATHE</strong>
+Let it out - <strong>BREATHE</strong>
+Just close your eyes don't hold it inside you
+<strong>BREATHE</strong></p>
 
-        <div class="lyrics-verse">
-            She said baby you look down tonight<br>
-            There's something wrong and that ain't right<br>
-            I hear you talking in your sleep<br>
-            I want to dive into your dreams<br>
-            And wrap my loving arms around you<br>
-            Protect you when the waves crash down on you<br>
-            When you're lost and you're scared<br>
-            I'll be the air
-        </div>
+      <p class="verse">When you give and you take
+And it feels like something breaks
+It's alright - <strong>BREATHE</strong></p>
 
-        <div class="lyrics-chorus">
-            <span class="lyrics-label">Chorus</span>
-            When it hurts - BREATHE<br>
-            When it burns - BREATHE<br>
-            The feeling inside you is feeling like I do<br>
-            Take a breath - BREATHE<br>
-            Let it out - BREATHE<br>
-            Just close your eyes don't hold it inside you<br>
-            <strong>BREATHE</strong>
-        </div>
+      <div class="stage">[ GUITAR SOLO ]</div>
 
-        <div class="lyrics-verse">
-            When you give and you take<br>
-            And it feels like something breaks<br>
-            It's alright -BREATHE
-        </div>
+      <p class="verse">When it hurts
+When you doubt
+When it burns
+Let it out
+When you give
+When you love
+When you live
+When you touch
+If all that we've got is each other
+Than all that we got is a lot</p>
 
-        <div class="lyrics-stage">
-            [ GUITAR SOLO ]
-        </div>
+      <div class="lyrics-tag">Final Chorus</div>
+      <p class="chorus">When it hurts - <strong>BREATHE</strong>
+When it burns - <strong>BREATHE</strong>
+The feeling inside you is feeling like I do
+Take a breathe - <strong>BREATHE</strong>
+Let it out - <strong>BREATHE</strong>
+Just close your eyes don't hold it inside you</p>
 
-        <div class="lyrics-verse">
-            When it hurts<br>
-            When you doubt<br>
-            When it burns<br>
-            Let it out<br>
-            When you give<br>
-            When you love<br>
-            When you live<br>
-            When you touch<br>
-            If all that we've got is each other<br>
-            Than all that we got is a lot
-        </div>
-
-        <div class="lyrics-chorus">
-            <span class="lyrics-label">Final Chorus</span>
-            When it hurts - BREATHE<br>
-            When it burns - BREATHE<br>
-            The feeling inside you is feeling like I do<br>
-            Take a breathe - BREATHE<br>
-            Let it out - BREATHE<br>
-            Just close your eyes don't hold it inside you<br>
-            <strong>BREATHE</strong>
-        </div>
-
-        <div class="lyrics-ending">
-            BREATHE
-        </div>
-
+      <p class="ending"><strong>BREATHE</strong></p>
     </div>
+  </details>
+`;
 
-</details>
+function escapeHTML(value) {
+  return String(value).replace(/[&<>"']/g, char => ({
+    "&":"&amp;",
+    "<":"&lt;",
+    ">":"&gt;",
+    '"':"&quot;",
+    "'":"&#39;"
+  })[char]);
+}
 
-    </article>
+function mediaPlayer(url, title, label) {
+  if (!url) return "";
+  return `
+    <section>
+      <span class="media-label">${label}</span>
+      <div class="audio-card">
+        <p class="audio-title">${escapeHTML(title)}</p>
+        <audio controls preload="none">
+          <source src="${url}" type="audio/mpeg">
+          Your browser does not support audio playback.
+        </audio>
+        <div class="links">
+          <a href="${url}" target="_blank" rel="noopener">Open / download ${label.toLowerCase()}</a>
+        </div>
+      </div>
+    </section>
+  `;
+}
 
+function videoPlayer(url, title) {
+  if (!url) return "";
+  return `
+    <section class="video-section">
+      <span class="media-label">VIDEO · ${escapeHTML(title)}</span>
+      <video controls preload="none" playsinline>
+        <source src="${url}" type="video/mp4">
+        Your browser does not support embedded video.
+      </video>
+      <div class="links">
+        <a href="${url}" target="_blank" rel="noopener">Open video source</a>
+      </div>
+    </section>
+  `;
+}
 
-    <!-- FOOTER -->
+function renderTracks(filter = "") {
+  const playlist = document.getElementById("playlist");
+  const query = filter.toLowerCase().trim();
 
-    <footer>
+  const filtered = tracks.filter(track =>
+    `${track.number} ${track.title} ${track.version || ""}`
+      .toLowerCase().includes(query)
+  );
 
-        SCOOBY LUCA · BON JOVI MUSIC ARCHIVE
+  document.getElementById("trackCount").textContent =
+    `${filtered.length} of ${tracks.length} tracks`;
 
-    </footer>
+  document.getElementById("emptyMessage").style.display =
+    filtered.length ? "none" : "block";
 
-</div>
+  playlist.innerHTML = filtered.map(track => {
+    const subtitle = [
+      track.version || "Demo",
+      track.video ? "Video" : "",
+      "Vocals",
+      "Instrumental"
+    ].filter(Boolean).join(" · ");
 
+    return `
+      <article class="track-card">
+        <header class="track-top">
+          <div class="track-no">TRACK #${track.number}</div>
+          <h2 class="track-title">${escapeHTML(track.title)}</h2>
+          <p class="track-sub">${escapeHTML(subtitle)}</p>
+        </header>
+
+        <div class="media">
+          ${videoPlayer(track.video, track.title)}
+          ${mediaPlayer(track.vocals, track.title + " — Vocals", "Vocals")}
+          ${mediaPlayer(track.instrumental, track.title + " — Instrumental", "Instrumental")}
+        </div>
+
+        ${track.lyrics ? breatheLyrics : ""}
+      </article>
+    `;
+  }).join("");
+}
+
+document.getElementById("searchInput").addEventListener("input", event => {
+  renderTracks(event.target.value);
+});
+
+renderTracks();
+</script>
 </body>
 </html>
