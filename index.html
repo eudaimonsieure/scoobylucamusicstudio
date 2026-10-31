@@ -266,6 +266,148 @@ footer {
         gap: 4px;
     }
 }
+
+
+/* =================================
+   LYRICS PANEL
+================================= */
+
+.lyrics-panel {
+    margin: 0 20px 25px;
+    overflow: hidden;
+    background: linear-gradient(145deg, #24221e, #17181c);
+    border: 1px solid rgba(214,179,106,.35);
+    border-radius: 12px;
+}
+
+.lyrics-panel summary {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    padding: 20px;
+    cursor: pointer;
+    list-style: none;
+}
+
+.lyrics-panel summary::-webkit-details-marker {
+    display: none;
+}
+
+.lyrics-heading {
+    color: #f0d28e;
+    font-family: Georgia, serif;
+    font-size: 21px;
+    letter-spacing: 2px;
+}
+
+.lyrics-subheading {
+    display: block;
+    margin-top: 5px;
+    color: #a5a5a5;
+    font-family: Arial, sans-serif;
+    font-size: 10px;
+    letter-spacing: 2px;
+}
+
+.lyrics-toggle {
+    color: #d6b36a;
+    font-size: 23px;
+    transition: transform .25s ease;
+}
+
+.lyrics-panel[open] .lyrics-toggle {
+    transform: rotate(45deg);
+}
+
+.lyrics-content {
+    padding: 10px 25px 30px;
+    border-top: 1px solid #34363d;
+}
+
+.lyrics-album {
+    margin: 20px 0 25px;
+    padding-bottom: 17px;
+    border-bottom: 1px solid rgba(214,179,106,.25);
+    color: #a5a5a5;
+    font-size: 11px;
+    line-height: 2;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+}
+
+.lyrics-album strong {
+    color: #d6b36a;
+}
+
+.lyrics-verse {
+    margin: 25px 0;
+    color: #dedbd4;
+    font-family: Georgia, serif;
+    font-size: 16px;
+    line-height: 1.95;
+}
+
+.lyrics-label {
+    display: block;
+    margin-bottom: 10px;
+    color: #d6b36a;
+    font-family: Arial, sans-serif;
+    font-size: 10px;
+    font-weight: bold;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+}
+
+.lyrics-chorus {
+    margin: 25px 0;
+    padding: 18px 20px;
+    background: rgba(214,179,106,.07);
+    border-left: 3px solid #d6b36a;
+    border-radius: 0 8px 8px 0;
+    color: #f0d28e;
+    font-family: Georgia, serif;
+    font-size: 16px;
+    line-height: 2;
+}
+
+.lyrics-stage {
+    margin: 25px 0;
+    color: #aaa;
+    font-family: Arial, sans-serif;
+    font-size: 11px;
+    font-style: italic;
+    letter-spacing: 3px;
+    text-align: center;
+}
+
+.lyrics-ending {
+    margin-top: 30px;
+    color: #f0d28e;
+    font-family: Georgia, serif;
+    font-size: 20px;
+    font-weight: bold;
+    letter-spacing: 7px;
+    text-align: center;
+}
+
+@media (max-width: 550px) {
+    .lyrics-panel {
+        margin-right: 14px;
+        margin-left: 14px;
+    }
+
+    .lyrics-content {
+        padding-right: 17px;
+        padding-left: 17px;
+    }
+
+    .lyrics-verse,
+    .lyrics-chorus {
+        font-size: 15px;
+    }
+}
+    
 </style>
 </head>
 
@@ -443,6 +585,116 @@ footer {
             </div>
 
         </section>
+
+<!-- =================================
+     BREATHE (DEMO) LYRICS
+================================= -->
+
+<details class="lyrics-panel" open>
+
+    <summary>
+        <div>
+            <span class="lyrics-heading">Lyrics</span>
+            <span class="lyrics-subheading">
+                BREATHE (DEMO) · TRACK 01
+            </span>
+        </div>
+
+        <span class="lyrics-toggle">+</span>
+    </summary>
+
+    <div class="lyrics-content">
+
+        <div class="lyrics-album">
+            ALBUM: <strong>BOUNCE Demos and B-sides</strong><br>
+            TRACK: <strong>BREATHE</strong>
+        </div>
+
+        <div class="lyrics-verse">
+            What's the world coming to<br>
+            Where are we all running to<br>
+            Not all our dreams are coming true<br>
+            We can't let it break us<br>
+            In two hearts that beat as one<br>
+            Can't let the clouds cover the sun<br>
+            If I'm ramblin' I'm guilty<br>
+            Of wearing my heart on my sleeve
+        </div>
+
+        <div class="lyrics-chorus">
+            <span class="lyrics-label">Chorus</span>
+            When it hurts - BREATHE<br>
+            When it burns - BREATHE<br>
+            The feeling inside you is feeling like I do<br>
+            Take a breath - BREATHE<br>
+            Let it out - BREATHE<br>
+            Just close your eyes don't hold it inside you<br>
+            <strong>BREATHE</strong>
+        </div>
+
+        <div class="lyrics-verse">
+            She said baby you look down tonight<br>
+            There's something wrong and that ain't right<br>
+            I hear you talking in your sleep<br>
+            I want to dive into your dreams<br>
+            And wrap my loving arms around you<br>
+            Protect you when the waves crash down on you<br>
+            When you're lost and you're scared<br>
+            I'll be the air
+        </div>
+
+        <div class="lyrics-chorus">
+            <span class="lyrics-label">Chorus</span>
+            When it hurts - BREATHE<br>
+            When it burns - BREATHE<br>
+            The feeling inside you is feeling like I do<br>
+            Take a breath - BREATHE<br>
+            Let it out - BREATHE<br>
+            Just close your eyes don't hold it inside you<br>
+            <strong>BREATHE</strong>
+        </div>
+
+        <div class="lyrics-verse">
+            When you give and you take<br>
+            And it feels like something breaks<br>
+            It's alright -BREATHE
+        </div>
+
+        <div class="lyrics-stage">
+            [ GUITAR SOLO ]
+        </div>
+
+        <div class="lyrics-verse">
+            When it hurts<br>
+            When you doubt<br>
+            When it burns<br>
+            Let it out<br>
+            When you give<br>
+            When you love<br>
+            When you live<br>
+            When you touch<br>
+            If all that we've got is each other<br>
+            Than all that we got is a lot
+        </div>
+
+        <div class="lyrics-chorus">
+            <span class="lyrics-label">Final Chorus</span>
+            When it hurts - BREATHE<br>
+            When it burns - BREATHE<br>
+            The feeling inside you is feeling like I do<br>
+            Take a breathe - BREATHE<br>
+            Let it out - BREATHE<br>
+            Just close your eyes don't hold it inside you<br>
+            <strong>BREATHE</strong>
+        </div>
+
+        <div class="lyrics-ending">
+            BREATHE
+        </div>
+
+    </div>
+
+</details>
 
     </article>
 
