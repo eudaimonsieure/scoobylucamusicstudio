@@ -321,7 +321,13 @@ const searchInput = document.getElementById("searchInput");
 
 const noResults = document.getElementById("noResults");
 
+const AUDIO_BASE =
+"https://raw.githubusercontent.com/eudaimonsieure/scoobylucamusicstudio/bon-jovi/";
 
+function getAudioURL(file) {
+    return AUDIO_BASE +
+        file.split("/").map(encodeURIComponent).join("/");
+}
 /* =====================================
    URL BUILDER
 ===================================== */
