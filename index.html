@@ -1,4 +1,4 @@
-
+```html
 <!DOCTYPE html>
 <html lang="en">
 
@@ -269,11 +269,11 @@ footer {
    AUDIO CONFIGURATION
 ===================================== */
 
-// If MP3 files are inside a folder,
-// change this to "audio/"
-// Keep "" if they are beside index.html.
+// GitHub repository branch/folder
+// MP3 files are located in the "bon-jovi" branch.
 
-const AUDIO_FOLDER = "";
+const AUDIO_BASE =
+    "https://raw.githubusercontent.com/eudaimonsieure/scoobylucamusicstudio/bon-jovi/";
 
 
 /* =====================================
@@ -313,31 +313,30 @@ const tracks = [
    ELEMENT REFERENCES
 ===================================== */
 
-const trackList = document.getElementById("trackList");
+const trackList =
+    document.getElementById("trackList");
 
-const trackCount = document.getElementById("trackCount");
+const trackCount =
+    document.getElementById("trackCount");
 
-const searchInput = document.getElementById("searchInput");
+const searchInput =
+    document.getElementById("searchInput");
 
-const noResults = document.getElementById("noResults");
+const noResults =
+    document.getElementById("noResults");
 
-const AUDIO_BASE =
-"https://raw.githubusercontent.com/eudaimonsieure/scoobylucamusicstudio/bon-jovi/";
 
-function getAudioURL(file) {
-    return AUDIO_BASE +
-        file.split("/").map(encodeURIComponent).join("/");
-}
 /* =====================================
    URL BUILDER
 ===================================== */
 
 function getAudioURL(file) {
 
-    return AUDIO_FOLDER + file
-        .split("/")
-        .map(part => encodeURIComponent(part))
-        .join("/");
+    return AUDIO_BASE +
+        file
+            .split("/")
+            .map(part => encodeURIComponent(part))
+            .join("/");
 
 }
 
@@ -361,8 +360,14 @@ function formatTitle(file) {
 
 function getTrackType(file) {
 
-    if (file.toLowerCase().includes("instrumental")) {
+    if (
+        file
+            .toLowerCase()
+            .includes("instrumental")
+    ) {
+
         return "INSTRUMENTAL / BACKING TRACK";
+
     }
 
     return "VOCAL / ORIGINAL TRACK";
@@ -378,103 +383,144 @@ function renderTracks(filter = "") {
 
     trackList.innerHTML = "";
 
-    const filteredTracks = tracks.filter(file => {
+    const filteredTracks =
+        tracks.filter(file => {
 
-        return formatTitle(file)
-            .toLowerCase()
-            .includes(filter.toLowerCase());
+            return formatTitle(file)
+                .toLowerCase()
+                .includes(filter.toLowerCase());
 
-    });
+        });
+
+
+    /* TRACK COUNT */
 
     trackCount.textContent =
         `${filteredTracks.length} of ${tracks.length} tracks`;
 
+
+    /* NO RESULTS */
+
     noResults.style.display =
-        filteredTracks.length === 0 ? "block" : "none";
+        filteredTracks.length === 0
+            ? "block"
+            : "none";
 
 
-    filteredTracks.forEach((file, index) => {
+    /* GENERATE TRACKS */
 
-        const audioURL = getAudioURL(file);
+    filteredTracks.forEach(file => {
 
-        // TRACK CARD
+        /*
+         * Build the GitHub audio URL once.
+         * This same URL is used by both
+         * the audio player and download link.
+         */
 
-        const card = document.createElement("section");
+        const audioURL =
+            getAudioURL(file);
+
+
+        /* TRACK CARD */
+
+        const card =
+            document.createElement("section");
 
         card.className = "track";
 
 
-        // TRACK HEADING
+        /* TRACK HEADING */
 
-        const heading = document.createElement("h3");
+        const heading =
+            document.createElement("h3");
 
         heading.textContent =
             `${tracks.indexOf(file) + 1}. ${formatTitle(file)}`;
 
 
-        // TRACK TYPE LABEL
+        /* TRACK TYPE */
 
-        const type = document.createElement("div");
+        const type =
+            document.createElement("div");
 
         type.className = "track-type";
 
-        type.textContent = getTrackType(file);
+        type.textContent =
+            getTrackType(file);
 
 
-        // AUDIO PLAYER
+        /* AUDIO PLAYER */
 
-        const player = document.createElement("audio");
+        const player =
+            document.createElement("audio");
 
         player.controls = true;
 
         player.preload = "none";
 
-        player.setAttribute("aria-label", formatTitle(file));
+        player.setAttribute(
+            "aria-label",
+            formatTitle(file)
+        );
 
 
-        // AUDIO SOURCE
+        /* AUDIO SOURCE */
 
-        const source = document.createElement("source");
+        const source =
+            document.createElement("source");
 
-        source.src = audioURL;
+        source.src =
+            audioURL;
 
-        source.type = "audio/mpeg";
+        source.type =
+            "audio/mpeg";
 
 
         player.appendChild(source);
 
 
-        // ERROR MESSAGE
+        /* ERROR MESSAGE */
 
-        const error = document.createElement("div");
+        const error =
+            document.createElement("div");
 
-        error.className = "track-error";
+        error.className =
+            "track-error";
 
         error.textContent =
             "Unable to load this MP3. Check the file name and repository path.";
 
 
-        player.addEventListener("error", () => {
+        player.addEventListener(
+            "error",
+            () => {
 
-            error.style.display = "block";
+                error.style.display =
+                    "block";
 
-        });
-
-
-        // DOWNLOAD LINK
-
-        const download = document.createElement("a");
-
-        download.className = "download";
-
-        download.href = audioURL;
-
-        download.download = file;
-
-        download.textContent = "↓ Download MP3";
+            }
+        );
 
 
-        // ASSEMBLE CARD
+        /* DOWNLOAD LINK */
+
+        const download =
+            document.createElement("a");
+
+        download.className =
+            "download";
+
+        download.href =
+            audioURL;
+
+        download.download =
+            file;
+
+        download.textContent =
+            "↓ Download MP3";
+
+
+        /* ASSEMBLE CARD */
 
         card.append(
             heading,
@@ -484,6 +530,8 @@ function renderTracks(filter = "") {
             error
         );
 
+
+        /* ADD CARD TO PAGE */
 
         trackList.appendChild(card);
 
@@ -496,11 +544,16 @@ function renderTracks(filter = "") {
    SEARCH FUNCTION
 ===================================== */
 
-searchInput.addEventListener("input", event => {
+searchInput.addEventListener(
+    "input",
+    event => {
 
-    renderTracks(event.target.value.trim());
+        renderTracks(
+            event.target.value.trim()
+        );
 
-});
+    }
+);
 
 
 /* =====================================
@@ -513,3 +566,4 @@ renderTracks();
 
 </body>
 </html>
+```
