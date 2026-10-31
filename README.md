@@ -1,22 +1,17 @@
 Bon Jovi's 2003 Target Exclusive EP to promote their at the time new album Bounce, with outtakes from the album Crush.
 
-# Web Page Sampler
+# Back tracking Samplers
 
-## What's this?
+##01 Breathe (Demo).mp3
 
-This is a Chrome extension that helps to sample audio from any web page.
+https://github.com/user-attachments/assets/474a82ba-0b64-491f-a4f0-244384ae245c
 
-Instead of using cursor, I use a text-based workflow.
+#MP3
 
-https://user-images.githubusercontent.com/35621141/227620567-88825e97-bfa3-498f-8342-3b82481dd4b9.mp4
+https://github.com/user-attachments/files/34210844/01.Breathe.Demo.mp3 [vocals]
 
-## Installation
+https://github.com/user-attachments/files/34210924/01.Breathe.Demo._.Instrumental.mp3 [instrumental]
 
-1. Download this repo and unzip it.
 
-2. Follow the instructions here:
-https://developer.chrome.com/docs/extensions/mv3/getstarted/development-basics/#load-unpacked
 
-## Contribution
 
-Issues and PR are welcomed!
