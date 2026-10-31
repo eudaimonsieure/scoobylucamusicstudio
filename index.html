@@ -1,16 +1,21 @@
 ```html
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Scooby Luca | Bon Jovi Collection</title>
 
-<meta name="description" content="Scooby Luca Bon Jovi Music Collection - Classic Rock, Demo Tracks and Instrumental Backing Tracks.">
-
 <style>
+:root {
+    --bg: #101114;
+    --card: #1b1d22;
+    --gold: #d6b36a;
+    --text: #f5f5f5;
+    --muted: #a5a5a5;
+    --border: #34363d;
+}
 
 * {
     box-sizing: border-box;
@@ -18,270 +23,217 @@
 
 body {
     margin: 0;
-    background: #171717;
-    color: #f5f0e6;
+    padding: 25px 15px 50px;
+    background: var(--bg);
+    color: var(--text);
     font-family: Arial, sans-serif;
 }
 
-/* HEADER */
+.container {
+    width: 100%;
+    max-width: 900px;
+    margin: auto;
+}
 
 header {
     text-align: center;
-    padding: 55px 20px 35px;
-    background: linear-gradient(135deg, #292019, #111);
-    border-bottom: 2px solid #c58b42;
+    padding: 30px 10px;
 }
 
-h1 {
+header h1 {
     margin: 0;
-    font-size: clamp(26px, 5vw, 38px);
+    color: var(--gold);
+    font-size: 34px;
     letter-spacing: 5px;
-    color: #e8b66d;
+}
+
+header h2 {
+    margin: 12px 0 8px;
+    font-size: 21px;
+    letter-spacing: 3px;
 }
 
 header p {
-    color: #c8bba8;
+    color: var(--muted);
+    font-size: 12px;
     letter-spacing: 2px;
-    font-size: 13px;
 }
 
-/* MAIN */
-
-main {
-    max-width: 850px;
-    margin: 35px auto;
-    padding: 0 18px;
+.search-box {
+    margin: 20px 0;
 }
 
-.section-heading {
-    color: #e8b66d;
-    margin-bottom: 8px;
-}
-
-.description {
-    color: #aaa;
-    font-size: 14px;
-    margin-bottom: 25px;
-}
-
-/* SEARCH */
-
-.search-container {
-    margin-bottom: 25px;
-}
-
-#searchInput {
+.search-box input {
     width: 100%;
-    padding: 13px 15px;
-    border-radius: 7px;
-    border: 1px solid #555;
-    background: #252525;
+    padding: 15px;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    outline: none;
+    background: var(--card);
     color: white;
     font-size: 15px;
-    outline: none;
 }
 
-#searchInput:focus {
-    border-color: #c58b42;
+.search-box input:focus {
+    border-color: var(--gold);
 }
-
-/* TRACK COUNT */
 
 .track-count {
-    color: #c8bba8;
+    color: var(--muted);
+    margin: 15px 3px;
     font-size: 13px;
-    margin-bottom: 15px;
 }
 
-/* TRACK CARD */
-
-.track {
-    background: #252525;
-    border: 1px solid #414141;
-    border-radius: 9px;
+.track-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
     padding: 18px;
-    margin-bottom: 15px;
-    transition: border-color 0.2s;
+    margin-bottom: 14px;
 }
 
-.track:hover {
-    border-color: #c58b42;
+.track-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 12px;
 }
 
-.track h3 {
-    margin: 0 0 12px;
-    color: #e8b66d;
+.track-name {
     font-size: 16px;
-    line-height: 1.5;
+    font-weight: bold;
+    overflow-wrap: anywhere;
 }
-
-/* TRACK TYPE */
 
 .track-type {
-    display: inline-block;
+    color: var(--gold);
+    border: 1px solid var(--gold);
+    padding: 5px 9px;
+    border-radius: 20px;
     font-size: 10px;
-    letter-spacing: 1px;
-    padding: 4px 8px;
-    border-radius: 4px;
-    margin-bottom: 12px;
-    background: #393127;
-    color: #e8b66d;
+    white-space: nowrap;
 }
-
-/* AUDIO PLAYER */
 
 audio {
     display: block;
     width: 100%;
-    margin-bottom: 12px;
+    height: 42px;
+    margin: 10px 0;
 }
 
-audio:focus {
-    outline: 1px solid #c58b42;
+.track-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
 }
 
-/* DOWNLOAD */
+.file-size {
+    color: var(--muted);
+    font-size: 12px;
+}
 
-.download {
+.download-btn {
     display: inline-block;
-    color: #e8b66d;
+    padding: 9px 15px;
+    border-radius: 7px;
+    background: var(--gold);
+    color: #151515;
+    font-weight: bold;
+    font-size: 12px;
     text-decoration: none;
-    font-size: 13px;
-    padding: 5px 0;
 }
 
-.download:hover {
-    color: white;
-    text-decoration: underline;
+.download-btn:hover {
+    background: #f0cd82;
 }
 
-/* ERROR */
-
-.track-error {
-    color: #e58b78;
+.status {
+    color: #e2a2a2;
     font-size: 12px;
     margin-top: 8px;
-    display: none;
 }
 
-/* EMPTY SEARCH */
-
-.no-results {
+.empty {
     display: none;
+    padding: 30px;
     text-align: center;
-    padding: 35px 15px;
-    color: #999;
-    background: #252525;
-    border-radius: 9px;
+    color: var(--muted);
 }
-
-/* FOOTER */
 
 footer {
     text-align: center;
-    color: #888;
-    padding: 35px 15px;
-    font-size: 12px;
-    border-top: 1px solid #333;
-    margin-top: 50px;
+    color: var(--muted);
+    font-size: 11px;
+    padding: 30px 10px;
+    letter-spacing: 1px;
 }
 
-/* MOBILE */
-
-@media (max-width: 600px) {
-
-    header {
-        padding: 40px 15px 25px;
+@media (max-width: 500px) {
+    header h1 {
+        font-size: 26px;
     }
 
-    h1 {
-        letter-spacing: 3px;
+    header h2 {
+        font-size: 17px;
     }
 
-    main {
-        margin-top: 25px;
+    .track-card {
+        padding: 14px;
     }
-
-    .track {
-        padding: 15px;
-    }
-
 }
-
 </style>
 </head>
 
 <body>
 
+<div class="container">
+
 <header>
-
     <h1>SCOOBY LUCA</h1>
-
-    <p>BON JOVI COLLECTION</p>
-
+    <h2>BON JOVI COLLECTION</h2>
     <p>CLASSIC ROCK · MUSIC · BACKING TRACKS</p>
-
 </header>
 
+<div class="search-box">
+    <input
+        type="search"
+        id="searchInput"
+        placeholder="Search songs..."
+        autocomplete="off"
+    >
+</div>
 
-<main id="playlist">
+<div class="track-count" id="trackCount"></div>
 
-    <h2 class="section-heading">Bon Jovi Tracks</h2>
+<div id="playlist"></div>
 
-    <p class="description">
-        Listen online or download your tracks.
-    </p>
-
-    <div class="search-container">
-
-        <input
-            type="search"
-            id="searchInput"
-            placeholder="Search tracks..."
-            aria-label="Search music tracks"
-        >
-
-    </div>
-
-    <div class="track-count" id="trackCount">
-        Loading tracks...
-    </div>
-
-    <div id="trackList"></div>
-
-    <div class="no-results" id="noResults">
-        No matching tracks found.
-    </div>
-
-</main>
-
+<div class="empty" id="emptyMessage">
+    No tracks found.
+</div>
 
 <footer>
-
-    SCOOBY LUCA · MUSIC COLLECTION
-
+    SCOOBY LUCA · BON JOVI MUSIC COLLECTION
 </footer>
 
+</div>
 
 <script>
-
-/* =====================================
-   AUDIO CONFIGURATION
-===================================== */
-
-// GitHub repository branch/folder
-// MP3 files are located in the "bon-jovi" branch.
+/* =================================
+   AUDIO FILE LOCATION
+================================= */
 
 const AUDIO_BASE =
-    "https://raw.githubusercontent.com/eudaimonsieure/scoobylucamusicstudio/bon-jovi/";
+    "https://eudaimonsieure.github.io/scoobylucamusicstudio/bon-jovi/";
 
 
-/* =====================================
+/* =================================
    TRACK DATABASE
-===================================== */
+================================= */
 
 const tracks = [
-
     "01-Breathe-Demo.mp3",
     "01-Breathe-Demo-Instrumental.mp3",
 
@@ -305,262 +257,242 @@ const tracks = [
 
     "08-Just-Older-Live.mp3",
     "08-Just-Older-Live-Instrumental.mp3"
-
 ];
 
 
-/* =====================================
-   ELEMENT REFERENCES
-===================================== */
-
-const trackList =
-    document.getElementById("trackList");
-
-const trackCount =
-    document.getElementById("trackCount");
-
-const searchInput =
-    document.getElementById("searchInput");
-
-const noResults =
-    document.getElementById("noResults");
-
-
-/* =====================================
-   URL BUILDER
-===================================== */
+/* =================================
+   BUILD AUDIO URL
+================================= */
 
 function getAudioURL(file) {
-
     return AUDIO_BASE +
-        file
-            .split("/")
+        file.split("/")
             .map(part => encodeURIComponent(part))
             .join("/");
-
 }
 
 
-/* =====================================
-   TRACK TITLE
-===================================== */
+/* =================================
+   FORMAT FILE SIZE
+================================= */
 
-function formatTitle(file) {
-
-    return file
-        .replace(/\.mp3$/i, "")
-        .replace(/[-_]/g, " ");
-
-}
-
-
-/* =====================================
-   TRACK TYPE
-===================================== */
-
-function getTrackType(file) {
-
-    if (
-        file
-            .toLowerCase()
-            .includes("instrumental")
-    ) {
-
-        return "INSTRUMENTAL / BACKING TRACK";
-
+function formatFileSize(bytes) {
+    if (!Number.isFinite(bytes) || bytes <= 0) {
+        return "Size unavailable";
     }
 
-    return "VOCAL / ORIGINAL TRACK";
+    if (bytes < 1024 * 1024) {
+        return (bytes / 1024).toFixed(1) + " KB";
+    }
 
+    return (bytes / (1024 * 1024)).toFixed(2) + " MB";
 }
 
 
-/* =====================================
-   GENERATE TRACK CARDS
-===================================== */
+/* =================================
+   GET FILE SIZE
 
-function renderTracks(filter = "") {
+   GitHub Pages may not expose
+   Content-Length on HEAD requests.
+================================= */
 
-    trackList.innerHTML = "";
-
-    const filteredTracks =
-        tracks.filter(file => {
-
-            return formatTitle(file)
-                .toLowerCase()
-                .includes(filter.toLowerCase());
-
+async function getFileSize(url, element) {
+    try {
+        const response = await fetch(url, {
+            method: "HEAD"
         });
 
+        if (!response.ok) {
+            throw new Error("File unavailable");
+        }
 
-    /* TRACK COUNT */
+        const size = response.headers.get("content-length");
 
-    trackCount.textContent =
-        `${filteredTracks.length} of ${tracks.length} tracks`;
+        if (size) {
+            element.textContent =
+                formatFileSize(Number(size));
+        } else {
+            element.textContent = "Size unavailable";
+        }
 
-
-    /* NO RESULTS */
-
-    noResults.style.display =
-        filteredTracks.length === 0
-            ? "block"
-            : "none";
-
-
-    /* GENERATE TRACKS */
-
-    filteredTracks.forEach(file => {
-
-        /*
-         * Build the GitHub audio URL once.
-         * This same URL is used by both
-         * the audio player and download link.
-         */
-
-        const audioURL =
-            getAudioURL(file);
-
-
-        /* TRACK CARD */
-
-        const card =
-            document.createElement("section");
-
-        card.className = "track";
-
-
-        /* TRACK HEADING */
-
-        const heading =
-            document.createElement("h3");
-
-        heading.textContent =
-            `${tracks.indexOf(file) + 1}. ${formatTitle(file)}`;
-
-
-        /* TRACK TYPE */
-
-        const type =
-            document.createElement("div");
-
-        type.className = "track-type";
-
-        type.textContent =
-            getTrackType(file);
-
-
-        /* AUDIO PLAYER */
-
-        const player =
-            document.createElement("audio");
-
-        player.controls = true;
-
-        player.preload = "none";
-
-        player.setAttribute(
-            "aria-label",
-            formatTitle(file)
-        );
-
-
-        /* AUDIO SOURCE */
-
-        const source =
-            document.createElement("source");
-
-        source.src =
-            audioURL;
-
-        source.type =
-            "audio/mpeg";
-
-
-        player.appendChild(source);
-
-
-        /* ERROR MESSAGE */
-
-        const error =
-            document.createElement("div");
-
-        error.className =
-            "track-error";
-
-        error.textContent =
-            "Unable to load this MP3. Check the file name and repository path.";
-
-
-        player.addEventListener(
-            "error",
-            () => {
-
-                error.style.display =
-                    "block";
-
-            }
-        );
-
-
-        /* DOWNLOAD LINK */
-
-        const download =
-            document.createElement("a");
-
-        download.className =
-            "download";
-
-        download.href =
-            audioURL;
-
-        download.download =
-            file;
-
-        download.textContent =
-            "↓ Download MP3";
-
-
-        /* ASSEMBLE CARD */
-
-        card.append(
-            heading,
-            type,
-            player,
-            download,
-            error
-        );
-
-
-        /* ADD CARD TO PAGE */
-
-        trackList.appendChild(card);
-
-    });
-
+    } catch (error) {
+        element.textContent = "Size unavailable";
+    }
 }
 
 
-/* =====================================
-   SEARCH FUNCTION
-===================================== */
+/* =================================
+   DETECT TRACK TYPE
+================================= */
 
-searchInput.addEventListener(
-    "input",
-    event => {
+function getTrackType(file) {
+    if (file.toLowerCase().includes("instrumental")) {
+        return "INSTRUMENTAL";
+    }
 
-        renderTracks(
-            event.target.value.trim()
+    if (file.toLowerCase().includes("acoustic")) {
+        return "ACOUSTIC";
+    }
+
+    if (file.toLowerCase().includes("live")) {
+        return "LIVE";
+    }
+
+    if (file.toLowerCase().includes("demo")) {
+        return "DEMO";
+    }
+
+    return "AUDIO";
+}
+
+
+/* =================================
+   FORMAT SONG TITLE
+================================= */
+
+function getTrackTitle(file) {
+    return file
+        .replace(/\.mp3$/i, "")
+        .replace(/^\d+-/, "")
+        .replace(/-Instrumental$/i, "")
+        .replace(/-/g, " ");
+}
+
+
+/* =================================
+   DOWNLOAD TRACK
+================================= */
+
+function downloadFile(url, filename) {
+    const link = document.createElement("a");
+
+    link.href = url;
+    link.download = filename;
+    link.target = "_blank";
+    link.rel = "noopener";
+
+    document.body.appendChild(link);
+    link.click();
+    link.remove();
+}
+
+
+/* =================================
+   RENDER PLAYLIST
+================================= */
+
+function renderTracks(list) {
+    const playlist = document.getElementById("playlist");
+    const trackCount = document.getElementById("trackCount");
+    const emptyMessage = document.getElementById("emptyMessage");
+
+    playlist.innerHTML = "";
+
+    trackCount.textContent =
+        `${list.length} track${list.length !== 1 ? "s" : ""}`;
+
+    emptyMessage.style.display =
+        list.length === 0 ? "block" : "none";
+
+    list.forEach(file => {
+
+        const audioURL = getAudioURL(file);
+        const title = getTrackTitle(file);
+        const type = getTrackType(file);
+
+        const card = document.createElement("div");
+        card.className = "track-card";
+
+        const top = document.createElement("div");
+        top.className = "track-top";
+
+        const name = document.createElement("div");
+        name.className = "track-name";
+        name.textContent = title;
+
+        const typeLabel = document.createElement("span");
+        typeLabel.className = "track-type";
+        typeLabel.textContent = type;
+
+        top.appendChild(name);
+        top.appendChild(typeLabel);
+
+        const audio = document.createElement("audio");
+        audio.controls = true;
+        audio.preload = "none";
+
+        const source = document.createElement("source");
+        source.src = audioURL;
+        source.type = "audio/mpeg";
+
+        audio.appendChild(source);
+
+        const status = document.createElement("div");
+        status.className = "status";
+        status.textContent = "";
+
+        audio.addEventListener("error", () => {
+            status.textContent =
+                "Unable to play this file. Check the MP3 URL or file encoding.";
+        });
+
+        const footer = document.createElement("div");
+        footer.className = "track-footer";
+
+        const size = document.createElement("span");
+        size.className = "file-size";
+        size.textContent = "Checking file size...";
+
+        const download = document.createElement("a");
+        download.className = "download-btn";
+        download.href = audioURL;
+        download.download = file;
+        download.target = "_blank";
+        download.rel = "noopener";
+        download.textContent = "DOWNLOAD";
+
+        footer.appendChild(size);
+        footer.appendChild(download);
+
+        card.appendChild(top);
+        card.appendChild(audio);
+        card.appendChild(status);
+        card.appendChild(footer);
+
+        playlist.appendChild(card);
+
+        getFileSize(audioURL, size);
+    });
+}
+
+
+/* =================================
+   SEARCH
+================================= */
+
+document.getElementById("searchInput")
+    .addEventListener("input", function() {
+
+        const search = this.value
+            .toLowerCase()
+            .trim();
+
+        const filtered = tracks.filter(file =>
+            getTrackTitle(file)
+                .toLowerCase()
+                .includes(search) ||
+            file.toLowerCase().includes(search)
         );
 
-    }
-);
+        renderTracks(filtered);
+    });
 
 
-/* =====================================
-   INITIALIZE PLAYLIST
-===================================== */
+/* =================================
+   INITIALIZE
+================================= */
 
-renderTracks();
+renderTracks(tracks);
 
 </script>
 
