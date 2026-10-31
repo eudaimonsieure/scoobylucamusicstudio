@@ -1,16 +1,22 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#101114">
 
-<title>Scooby Luca | Bon Jovi Collection</title>
+<title>Scooby Luca | Bon Jovi Back Tracking Samplers</title>
+
+<meta name="description" content="Bon Jovi 2003 Target Exclusive EP — Back Tracking Samplers, demos, vocals and instrumentals.">
 
 <style>
 :root {
     --bg: #101114;
     --card: #1b1d22;
+    --card2: #22252b;
     --gold: #d6b36a;
+    --gold-light: #f0d28e;
     --text: #f5f5f5;
     --muted: #a5a5a5;
     --border: #34363d;
@@ -23,164 +29,241 @@
 body {
     margin: 0;
     padding: 25px 15px 50px;
-    background: var(--bg);
+    background:
+        radial-gradient(ellipse at top, #302719 0%, transparent 45%),
+        var(--bg);
     color: var(--text);
     font-family: Arial, sans-serif;
+    line-height: 1.6;
 }
 
 .container {
     width: 100%;
-    max-width: 900px;
+    max-width: 950px;
     margin: auto;
 }
 
+/* HEADER */
+
 header {
     text-align: center;
-    padding: 30px 10px;
+    padding: 35px 10px 30px;
+    border-bottom: 1px solid var(--border);
+}
+
+.brand {
+    color: var(--gold);
+    font-size: 11px;
+    font-weight: bold;
+    letter-spacing: 5px;
+    text-transform: uppercase;
 }
 
 header h1 {
-    margin: 0;
-    color: var(--gold);
-    font-size: 34px;
+    margin: 12px 0 5px;
+    color: var(--gold-light);
+    font-family: Georgia, serif;
+    font-size: clamp(30px, 6vw, 48px);
+    font-weight: normal;
     letter-spacing: 5px;
 }
 
 header h2 {
-    margin: 12px 0 8px;
-    font-size: 21px;
-    letter-spacing: 3px;
+    margin: 8px 0;
+    font-size: 17px;
+    font-weight: normal;
+    letter-spacing: 4px;
 }
 
 header p {
     color: var(--muted);
-    font-size: 12px;
+    font-size: 11px;
     letter-spacing: 2px;
 }
 
-.search-box {
-    margin: 20px 0;
+/* COLLECTION DESCRIPTION */
+
+.description {
+    max-width: 760px;
+    margin: 30px auto;
+    text-align: center;
+    color: #cccccc;
+    font-size: 14px;
 }
 
-.search-box input {
-    width: 100%;
-    padding: 15px;
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    outline: none;
-    background: var(--card);
-    color: white;
-    font-size: 15px;
+.description em {
+    color: var(--gold-light);
 }
 
-.search-box input:focus {
-    border-color: var(--gold);
+/* SECTION */
+
+.section-title {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin: 35px 0 20px;
+    color: var(--gold-light);
+    font-family: Georgia, serif;
+    font-size: 23px;
+    font-weight: normal;
 }
 
-.track-count {
-    color: var(--muted);
-    margin: 15px 3px;
-    font-size: 13px;
+.section-title::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: var(--border);
 }
+
+/* TRACK CARD */
 
 .track-card {
+    overflow: hidden;
+    margin-bottom: 25px;
     background: var(--card);
     border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 18px;
-    margin-bottom: 14px;
+    border-radius: 13px;
 }
 
-.track-top {
+.track-header {
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    gap: 12px;
-    margin-bottom: 12px;
+    gap: 15px;
+    padding: 18px 20px;
+    background: var(--card2);
+    border-bottom: 1px solid var(--border);
+}
+
+.track-number {
+    display: grid;
+    place-items: center;
+    width: 43px;
+    height: 43px;
+    flex-shrink: 0;
+    border: 1px solid var(--gold);
+    border-radius: 8px;
+    color: var(--gold-light);
+    font-family: Georgia, serif;
+    font-size: 18px;
 }
 
 .track-name {
-    font-size: 16px;
-    font-weight: bold;
-    overflow-wrap: anywhere;
+    margin: 0;
+    font-family: Georgia, serif;
+    font-size: 19px;
 }
 
-.track-type {
-    color: var(--gold);
-    border: 1px solid var(--gold);
-    padding: 5px 9px;
-    border-radius: 20px;
+.track-subtitle {
+    color: var(--muted);
     font-size: 10px;
-    white-space: nowrap;
+    letter-spacing: 2px;
+}
+
+/* MEDIA */
+
+.media-section {
+    padding: 20px;
+}
+
+.media-label {
+    margin: 0 0 12px;
+    color: var(--gold);
+    font-size: 11px;
+    font-weight: bold;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+}
+
+video {
+    display: block;
+    width: 100%;
+    max-height: 520px;
+    aspect-ratio: 16 / 9;
+    background: #000;
+    border-radius: 9px;
+}
+
+.audio-item {
+    margin-top: 14px;
+    padding: 15px;
+    background: #15171b;
+    border: 1px solid var(--border);
+    border-radius: 9px;
+}
+
+.audio-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.audio-name {
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.audio-type {
+    color: var(--gold);
+    font-size: 10px;
+    letter-spacing: 2px;
 }
 
 audio {
     display: block;
     width: 100%;
     height: 42px;
-    margin: 10px 0;
 }
 
-.track-footer {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 10px;
-    flex-wrap: wrap;
-}
-
-.file-size {
-    color: var(--muted);
-    font-size: 12px;
-}
-
-.download-btn {
+.download {
     display: inline-block;
-    padding: 9px 15px;
-    border-radius: 7px;
-    background: var(--gold);
-    color: #151515;
-    font-weight: bold;
+    margin-top: 10px;
+    color: var(--gold-light);
     font-size: 12px;
     text-decoration: none;
+    border-bottom: 1px solid var(--gold);
 }
 
-.download-btn:hover {
-    background: #f0cd82;
+.download:hover {
+    color: white;
 }
 
-.status {
-    color: #e2a2a2;
-    font-size: 12px;
-    margin-top: 8px;
-}
-
-.empty {
-    display: none;
-    padding: 30px;
-    text-align: center;
-    color: var(--muted);
-}
+/* FOOTER */
 
 footer {
-    text-align: center;
+    margin-top: 45px;
+    padding: 25px 10px;
+    border-top: 1px solid var(--border);
     color: var(--muted);
+    text-align: center;
     font-size: 11px;
-    padding: 30px 10px;
-    letter-spacing: 1px;
+    letter-spacing: 2px;
 }
 
-@media (max-width: 500px) {
+/* MOBILE */
+
+@media (max-width: 550px) {
+    body {
+        padding: 15px 10px 35px;
+    }
+
+    header {
+        padding-top: 25px;
+    }
+
     header h1 {
-        font-size: 26px;
+        letter-spacing: 3px;
     }
 
-    header h2 {
-        font-size: 17px;
-    }
-
-    .track-card {
+    .media-section {
         padding: 14px;
+    }
+
+    .audio-heading {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 4px;
     }
 }
 </style>
@@ -190,315 +273,189 @@ footer {
 
 <div class="container">
 
-<header>
-    <h1>SCOOBY LUCA</h1>
-    <h2>BON JOVI COLLECTION</h2>
-    <p>CLASSIC ROCK · MUSIC · BACKING TRACKS</p>
-</header>
+    <!-- HEADER -->
 
-<div class="search-box">
-    <input
-        type="search"
-        id="searchInput"
-        placeholder="Search songs..."
-        autocomplete="off"
-    >
+    <header>
+        <div class="brand">Scooby Luca Music Archive</div>
+
+        <h1>BON JOVI</h1>
+
+        <h2>BACK TRACKING SAMPLERS</h2>
+
+        <p>CLASSIC ROCK · DEMOS · VOCALS · INSTRUMENTALS</p>
+    </header>
+
+
+    <!-- COLLECTION INFORMATION -->
+
+    <section class="description">
+
+        Bon Jovi's 2003 Target Exclusive EP to promote
+        their at-the-time new album <em>Bounce</em>,
+        with outtakes from the album <em>Crush</em>.
+
+    </section>
+
+
+    <!-- BACK TRACKING SAMPLERS -->
+
+    <h2 class="section-title">
+        Back Tracking Samplers
+    </h2>
+
+
+    <!-- TRACK 01 -->
+
+    <article class="track-card">
+
+        <div class="track-header">
+
+            <div class="track-number">01</div>
+
+            <div>
+                <h3 class="track-name">
+                    Breathe (Demo)
+                </h3>
+
+                <div class="track-subtitle">
+                    VIDEO SAMPLER · AUDIO VERSIONS
+                </div>
+            </div>
+
+        </div>
+
+
+        <!-- VIDEO -->
+
+        <section class="media-section">
+
+            <p class="media-label">
+                Video Sampler
+            </p>
+
+            <video controls preload="metadata" playsinline>
+
+                <source
+                    src="https://github.com/user-attachments/assets/474a82ba-0b64-491f-a4f0-244384ae245c"
+                    type="video/mp4">
+
+                Your browser does not support HTML video.
+
+            </video>
+
+            <a
+                class="download"
+                href="https://github.com/user-attachments/assets/474a82ba-0b64-491f-a4f0-244384ae245c"
+                target="_blank"
+                rel="noopener">
+
+                Open Original Video
+
+            </a>
+
+        </section>
+
+
+        <!-- MP3 AUDIO -->
+
+        <section class="media-section">
+
+            <p class="media-label">
+                MP3 Audio
+            </p>
+
+
+            <!-- VOCALS -->
+
+            <div class="audio-item">
+
+                <div class="audio-heading">
+
+                    <span class="audio-name">
+                        Breathe (Demo)
+                    </span>
+
+                    <span class="audio-type">
+                        VOCALS
+                    </span>
+
+                </div>
+
+                <audio controls preload="none">
+
+                    <source
+                        src="https://github.com/user-attachments/files/34210844/01.Breathe.Demo.mp3"
+                        type="audio/mpeg">
+
+                    Your browser does not support MP3 playback.
+
+                </audio>
+
+                <a
+                    class="download"
+                    href="https://github.com/user-attachments/files/34210844/01.Breathe.Demo.mp3"
+                    target="_blank"
+                    rel="noopener">
+
+                    Open / Download MP3
+
+                </a>
+
+            </div>
+
+
+            <!-- INSTRUMENTAL -->
+
+            <div class="audio-item">
+
+                <div class="audio-heading">
+
+                    <span class="audio-name">
+                        Breathe (Demo)
+                    </span>
+
+                    <span class="audio-type">
+                        INSTRUMENTAL
+                    </span>
+
+                </div>
+
+                <audio controls preload="none">
+
+                    <source
+                        src="https://github.com/user-attachments/files/34210924/01.Breathe.Demo._.Instrumental.mp3"
+                        type="audio/mpeg">
+
+                    Your browser does not support MP3 playback.
+
+                </audio>
+
+                <a
+                    class="download"
+                    href="https://github.com/user-attachments/files/34210924/01.Breathe.Demo._.Instrumental.mp3"
+                    target="_blank"
+                    rel="noopener">
+
+                    Open / Download MP3
+
+                </a>
+
+            </div>
+
+        </section>
+
+    </article>
+
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        SCOOBY LUCA · BON JOVI MUSIC ARCHIVE
+
+    </footer>
+
 </div>
-<audio controls preload="metadata">
-  <source
-    src="https://raw.githubusercontent.com/eudaimonsieure/scoobylucamusicstudio/bon-jovi/01-Breathe-Demo.mp3"
-    type="audio/mpeg">
-  Your browser does not support audio playback.
-</audio>
-<div class="track-count" id="trackCount"></div>
-
-<div id="playlist"></div>
-
-<div class="empty" id="emptyMessage">
-    No tracks found.
-</div>
-
-<footer>
-    SCOOBY LUCA · BON JOVI MUSIC COLLECTION
-</footer>
-
-</div>
-
-<script>
-/* =================================
-   AUDIO FILE LOCATION
-================================= */
-
-const AUDIO_BASE =
-    "https://eudaimonsieure.github.io/scoobylucamusicstudio/bon-jovi/";
-
-
-/* =================================
-   TRACK DATABASE
-================================= */
-
-const tracks = [
-    "01-Breathe-Demo.mp3",
-    "01-Breathe-Demo-Instrumental.mp3",
-
-    "02-Lucky-Demo.mp3",
-    "02-Lucky-Demo-Instrumental.mp3",
-
-    "03-No-Regrets-Demo.mp3",
-    "03-No-Regrets-Demo-Instrumental.mp3",
-
-    "04-Standing-Demo.mp3",
-    "04-Standing-Demo-Instrumental.mp3",
-
-    "05-We-Can-Dance-Demo.mp3",
-    "05-We-Can-Dance-Demo-Instrumental.mp3",
-
-    "06-Misunderstood-Live.mp3",
-    "06-Misunderstood-Live-Instrumental.mp3",
-
-    "07-Everyday-Acoustic.mp3",
-    "07-Everyday-Acoustic-Instrumental.mp3",
-
-    "08-Just-Older-Live.mp3",
-    "08-Just-Older-Live-Instrumental.mp3"
-];
-
-
-/* =================================
-   BUILD AUDIO URL
-================================= */
-
-function getAudioURL(file) {
-    return AUDIO_BASE +
-        file.split("/")
-            .map(part => encodeURIComponent(part))
-            .join("/");
-}
-
-
-/* =================================
-   FORMAT FILE SIZE
-================================= */
-
-function formatFileSize(bytes) {
-    if (!Number.isFinite(bytes) || bytes <= 0) {
-        return "Size unavailable";
-    }
-
-    if (bytes < 1024 * 1024) {
-        return (bytes / 1024).toFixed(1) + " KB";
-    }
-
-    return (bytes / (1024 * 1024)).toFixed(2) + " MB";
-}
-
-
-/* =================================
-   GET FILE SIZE
-
-   GitHub Pages may not expose
-   Content-Length on HEAD requests.
-================================= */
-
-async function getFileSize(url, element) {
-    try {
-        const response = await fetch(url, {
-            method: "HEAD"
-        });
-
-        if (!response.ok) {
-            throw new Error("File unavailable");
-        }
-
-        const size = response.headers.get("content-length");
-
-        if (size) {
-            element.textContent =
-                formatFileSize(Number(size));
-        } else {
-            element.textContent = "Size unavailable";
-        }
-
-    } catch (error) {
-        element.textContent = "Size unavailable";
-    }
-}
-
-
-/* =================================
-   DETECT TRACK TYPE
-================================= */
-
-function getTrackType(file) {
-    if (file.toLowerCase().includes("instrumental")) {
-        return "INSTRUMENTAL";
-    }
-
-    if (file.toLowerCase().includes("acoustic")) {
-        return "ACOUSTIC";
-    }
-
-    if (file.toLowerCase().includes("live")) {
-        return "LIVE";
-    }
-
-    if (file.toLowerCase().includes("demo")) {
-        return "DEMO";
-    }
-
-    return "AUDIO";
-}
-
-
-/* =================================
-   FORMAT SONG TITLE
-================================= */
-
-function getTrackTitle(file) {
-    return file
-        .replace(/\.mp3$/i, "")
-        .replace(/^\d+-/, "")
-        .replace(/-Instrumental$/i, "")
-        .replace(/-/g, " ");
-}
-
-
-/* =================================
-   DOWNLOAD TRACK
-================================= */
-
-function downloadFile(url, filename) {
-    const link = document.createElement("a");
-
-    link.href = url;
-    link.download = filename;
-    link.target = "_blank";
-    link.rel = "noopener";
-
-    document.body.appendChild(link);
-    link.click();
-    link.remove();
-}
-
-
-/* =================================
-   RENDER PLAYLIST
-================================= */
-
-function renderTracks(list) {
-    const playlist = document.getElementById("playlist");
-    const trackCount = document.getElementById("trackCount");
-    const emptyMessage = document.getElementById("emptyMessage");
-
-    playlist.innerHTML = "";
-
-    trackCount.textContent =
-        `${list.length} track${list.length !== 1 ? "s" : ""}`;
-
-    emptyMessage.style.display =
-        list.length === 0 ? "block" : "none";
-
-    list.forEach(file => {
-
-        const audioURL = getAudioURL(file);
-        const title = getTrackTitle(file);
-        const type = getTrackType(file);
-
-        const card = document.createElement("div");
-        card.className = "track-card";
-
-        const top = document.createElement("div");
-        top.className = "track-top";
-
-        const name = document.createElement("div");
-        name.className = "track-name";
-        name.textContent = title;
-
-        const typeLabel = document.createElement("span");
-        typeLabel.className = "track-type";
-        typeLabel.textContent = type;
-
-        top.appendChild(name);
-        top.appendChild(typeLabel);
-
-        const audio = document.createElement("audio");
-        audio.controls = true;
-        audio.preload = "none";
-
-        const source = document.createElement("source");
-        source.src = audioURL;
-        source.type = "audio/mpeg";
-
-        audio.appendChild(source);
-
-        const status = document.createElement("div");
-        status.className = "status";
-        status.textContent = "";
-
-        audio.addEventListener("error", () => {
-            status.textContent =
-                "Unable to play this file. Check the MP3 URL or file encoding.";
-        });
-
-        const footer = document.createElement("div");
-        footer.className = "track-footer";
-
-        const size = document.createElement("span");
-        size.className = "file-size";
-        size.textContent = "Checking file size...";
-
-        const download = document.createElement("a");
-        download.className = "download-btn";
-        download.href = audioURL;
-        download.download = file;
-        download.target = "_blank";
-        download.rel = "noopener";
-        download.textContent = "DOWNLOAD";
-
-        footer.appendChild(size);
-        footer.appendChild(download);
-
-        card.appendChild(top);
-        card.appendChild(audio);
-        card.appendChild(status);
-        card.appendChild(footer);
-
-        playlist.appendChild(card);
-
-        getFileSize(audioURL, size);
-    });
-}
-
-
-/* =================================
-   SEARCH
-================================= */
-
-document.getElementById("searchInput")
-    .addEventListener("input", function() {
-
-        const search = this.value
-            .toLowerCase()
-            .trim();
-
-        const filtered = tracks.filter(file =>
-            getTrackTitle(file)
-                .toLowerCase()
-                .includes(search) ||
-            file.toLowerCase().includes(search)
-        );
-
-        renderTracks(filtered);
-    });
-
-
-/* =================================
-   INITIALIZE
-================================= */
-
-renderTracks(tracks);
-
-</script>
 
 </body>
 </html>
