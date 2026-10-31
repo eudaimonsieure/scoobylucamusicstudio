@@ -1,0 +1,137 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Scooby Luca | Bon Jovi Collection</title>
+
+<style>
+* { box-sizing: border-box; }
+
+body {
+    margin: 0;
+    background: #171717;
+    color: #f5f0e6;
+    font-family: Arial, sans-serif;
+}
+
+header {
+    text-align: center;
+    padding: 55px 20px 35px;
+    background: linear-gradient(135deg, #292019, #111);
+    border-bottom: 2px solid #c58b42;
+}
+
+h1 {
+    margin: 0;
+    font-size: 38px;
+    letter-spacing: 5px;
+    color: #e8b66d;
+}
+
+header p {
+    color: #c8bba8;
+    letter-spacing: 2px;
+}
+
+main {
+    max-width: 850px;
+    margin: 35px auto;
+    padding: 0 18px;
+}
+
+.track {
+    background: #252525;
+    border: 1px solid #414141;
+    border-radius: 9px;
+    padding: 18px;
+    margin-bottom: 15px;
+}
+
+.track h3 {
+    margin: 0 0 12px;
+    color: #e8b66d;
+}
+
+audio {
+    width: 100%;
+    margin-bottom: 8px;
+}
+
+.download {
+    color: #e8b66d;
+    text-decoration: none;
+    font-size: 13px;
+}
+
+footer {
+    text-align: center;
+    color: #888;
+    padding: 35px 15px;
+    font-size: 12px;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>SCOOBY LUCA</h1>
+    <p>BON JOVI COLLECTION</p>
+    <p>CLASSIC ROCK · MUSIC · BACKING TRACKS</p>
+</header>
+
+<main id="playlist">
+    <h2>Bon Jovi Tracks</h2>
+    <p>Listen online or download your tracks.</p>
+</main>
+
+<footer>
+    SCOOBY LUCA · MUSIC COLLECTION
+</footer>
+
+<script>
+const tracks = [
+    "Livin-on-a-Prayer.mp3",
+    "Always.mp3",
+    "Its-My-Life.mp3",
+    "Bed-of-Roses.mp3"
+];
+
+const playlist = document.getElementById("playlist");
+
+tracks.forEach((file, index) => {
+    const title = file
+        .replace(/\.mp3$/i, "")
+        .replace(/[-_]/g, " ");
+
+    const card = document.createElement("section");
+    card.className = "track";
+
+    const heading = document.createElement("h3");
+    heading.textContent = `${index + 1}. ${title}`;
+
+    const player = document.createElement("audio");
+    player.controls = true;
+    player.preload = "none";
+
+    const source = document.createElement("source");
+    source.src = encodeURIComponent(file);
+    source.type = "audio/mpeg";
+
+    player.appendChild(source);
+
+    const download = document.createElement("a");
+    download.className = "download";
+    download.href = encodeURIComponent(file);
+    download.download = file;
+    download.textContent = "↓ Download MP3";
+
+    card.append(heading, player, download);
+    playlist.appendChild(card);
+});
+</script>
+
+</body>
+</html>
